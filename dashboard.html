@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8" />
+    <title>EcoBit Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: sans-serif; padding: 20px; background: #f4fff4; }
+        canvas { max-width: 100%; }
+    </style>
+</head>
+<body>
+    <h1>📊 EcoBit Dashboard</h1>
+    <input type="file" id="csvFile" accept=".csv" />
+    <canvas id="chart" height="100"></canvas>
+    <p id="summary"></p>
+
+    <script>
+        document.getElementById('csvFile').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const lines = event.target.result.split('\n');
+                const labels = [];
+                const data = [];
+                let totalMB = 0;
+                for (let i = 1; i < lines.length; i++) {
+                    const row = lines[i].split(',');
+                    if (row.length >= 4) {
+                        labels.push(row[0]);
+                        data.push(parseFloat(row[3]));
+                        totalMB += parseFloat(row[3]);
+                    }
+                }
+
+                const ctx = document.getElementById('chart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'MB Trasferiti',
+                            data: data,
+                            borderColor: 'green',
+                            fill: false
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            x: { display: true },
+                            y: { beginAtZero: true }
+                        }
+                    }
+                });
+
+                const bit = totalMB * 8 * 1e6;
+                const energia = bit * 1e-6;  // media Wi-Fi
+                const costo = energia * 0.000000083;
+
+                document.getElementById('summary').innerText = 
+                  `Totale MB: ${totalMB.toFixed(2)} MB\nEnergia stimata: ${energia.toFixed(2)} J\nCosto stimato: €${costo.toFixed(6)}`;
+            };
+            reader.readAsText(file);
+        });
+    </script>
+
+<section style="margin-top: 30px;">
+  <h2>💡 Chi paga l'energia digitale?</h2>
+  <table border="1" cellpadding="6" style="border-collapse: collapse; background: #fff;">
+    <thead>
+      <tr>
+        <th>Tipo di consumo</th>
+        <th>Chi lo paga</th>
+        <th>Dove va l’energia</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>🔌 Wi-Fi/Fibra (casa o ufficio)</td>
+        <td>Tu (bolletta elettrica)</td>
+        <td>Router, PC, server</td>
+      </tr>
+      <tr>
+        <td>📡 5G/4G</td>
+        <td>Tu (piano dati + batteria)</td>
+        <td>Rete radio + telefono</td>
+      </tr>
+      <tr>
+        <td>☁️ Cloud (Google, ChatGPT, ecc.)</td>
+        <td>Tu (abbonamenti) + aziende cloud</td>
+        <td>Datacenter (molta CO₂)</td>
+      </tr>
+      <tr>
+        <td>💻 Browser, Zoom, video</td>
+        <td>Tu (corrente e batteria)</td>
+        <td>CPU, display, rete Wi-Fi</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="margin-top: 15px;">
+    🎯 <strong>Paghi sia il traffico dati che l’energia usata per gestirlo (indirettamente).</strong><br>
+    EcoBit serve proprio a <strong>rendere visibile ciò che normalmente è invisibile</strong>.
+  </p>
+</section>
+
+</body>
+</html>
