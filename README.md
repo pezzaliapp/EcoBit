@@ -1,14 +1,3 @@
-Perfetto.
-Ecco una versione estesa e completa del README.md per il progetto EcoBit, che include:
-	•	licenza
-	•	riflessione etica
-	•	numeri reali sull’impatto quotidiano del digitale
-	•	invito a creare consapevolezza
-	•	riferimenti alla tua visione (PayloadX, cultura, abbraccio)
-
-⸻
-
-
 # 🌱 EcoBit – Misura il tuo impatto digitale
 
 **EcoBit** è una PWA (Progressive Web App) open source, pensata per aiutarti a comprendere quanto **consumo energetico** e **costo invisibile** si nasconde dietro ogni megabyte che navighi o invii.
