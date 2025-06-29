@@ -31,58 +31,68 @@ E poi ci lamentiamo del costo della luce. Ma **ogni clic è corrente elettrica.*
 
 ---
 
-## 🔍 Ma allora dobbiamo tornare indietro?
+## 🐍 Come usare `EcoBit.py` e generare il file CSV
 
-**No.**
+### ✅ Requisiti
+- Python 3 installato (già presente su macOS, scaricabile su Windows)
+- Modulo `psutil` installato (una sola volta)
 
-Non servono rinunce, serve **consapevolezza**.  
-Serve **ottimizzare**:
-- usare browser leggeri (Brave, Safari)
-- disattivare autoplay video
-- evitare backup cloud in Wi-Fi lento
-- usare Ethernet dove possibile
-- programmare con linguaggi più efficienti (C > Python)
+### 1️⃣ Installa il modulo `psutil`
 
----
+Apri il **Terminale (macOS/Linux)** o il **Prompt dei comandi (Windows)** e digita:
 
-## 🧭 EcoBit ti aiuta a:
+pip3 install psutil
 
-- Calcolare energia e costo stimato di ogni megabyte
-- Visualizzare i dati reali di traffico salvati in locale (CSV)
-- Simulare alternative di rete e consumo
-- Prendere decisioni più intelligenti, più sostenibili
+Oppure, se `pip3` non funziona:
+
+python3 -m pip install psutil
 
 ---
 
-## 📦 Contenuto del progetto
+### 2️⃣ Avvia lo script
 
-- `index.html` → Calcolatore consumo energetico
-- `dashboard.html` → Grafico CSV interattivo
-- `EcoBit.py` → Script Python per monitorare traffico locale
-- `manifest.json` → PWA installabile su iPhone, Android, PC, Mac
-- `icon/` → Logo ufficiale EcoBit
-- `README.md` → Questa guida
+Spostati nella cartella dove hai salvato `EcoBit.py`.  
+Esempio su macOS:
+
+cd ~/Desktop/EcoBit
+python3 EcoBit.py
+
+⚠️ **Importante:** Lascia il Terminale aperto, lo script misura ogni 10 secondi il traffico di rete.
 
 ---
 
-## 🪐 Una visione più ampia
+### 3️⃣ Visualizza i dati in `ecobit_log.csv`
 
-Siamo **polvere di stelle**.  
-La nostra intelligenza – ancora nostra – ci permette di scegliere.  
-Siamo capaci di emozione, di compassione, di gratitudine.
+Il file `ecobit_log.csv` viene creato nella stessa cartella dove si trova lo script.  
+Contiene righe come:
 
-**PayloadX** è la dimostrazione che anche la tecnologia può essere poesia, può servire a migliorare ciò che siamo e ciò che lasciamo.
+timestamp,bytes_sent,bytes_recv,total_MB
+2025-06-29T12:01:00,2345,6742,0.01
+…
 
-EcoBit è solo un piccolo seme.  
-Ma un seme può diventare un albero, se coltivato nel terreno giusto:  
-**quello della consapevolezza.**
+---
 
-Grazie per ogni clic più leggero, per ogni scelta più lucida.  
-E anche solo per aver letto fin qui.
+### 4️⃣ Carica il CSV nella dashboard EcoBit
 
-Un semplice abbraccio con consapevolezza.
+- Apri `dashboard.html` nel browser
+- Tocca **"Scegli file"**
+- Seleziona il file `ecobit_log.csv`
+- Visualizza il grafico dei MB trasferiti con:
+  - ⚡ Energia stimata
+  - 💰 Costo invisibile
 
-— [Alessandro Pezzali](https://www.alessandropezzali.it)
+---
+
+### ✅ Ferma lo script quando vuoi con:
+
+CTRL + C
+
+---
+
+### 🧠 Perché CSV?
+
+Per lasciare tutto semplice, trasparente e modificabile.  
+Nessun cloud. Nessuna registrazione. Solo **consapevolezza reale**.
 
 ---
 
