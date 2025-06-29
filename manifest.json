@@ -2,9 +2,9 @@
 {
   "name": "EcoBit",
   "short_name": "EcoBit",
-  "start_url": "dashboard.html",
+  "start_url": "index.html",
   "display": "standalone",
-  "background_color": "#f4fff4",
+  "background_color": "#f1fdf1",
   "theme_color": "#2e7d32",
   "icons": [
     {
