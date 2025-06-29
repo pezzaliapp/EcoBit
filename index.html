@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <title>EcoBit – Risparmio Energetico</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>🌱 EcoBit</h1>
+  <p>Browser rilevato: <span id="browser"></span></p>
+  <p>Inserisci consumo dati (MB): <input type="number" id="mb" value="100" /></p>
+  <p>Tipo di rete:
+    <select id="rete">
+      <option value="WiFi">Wi-Fi</option>
+      <option value="Ethernet">Ethernet</option>
+      <option value="5G">5G</option>
+    </select>
+  </p>
+  <button onclick="calcola()">Calcola Consumo</button>
+  <div id="output"></div>
+  <script src="script.js"></script>
+</body>
+</html>
